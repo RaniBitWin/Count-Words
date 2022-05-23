@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <title>Count Words</title>
+    
+	<form action="" onsubmit="return false">
+		<fieldset>
+			<legend><h1>Contar Palavra ou Frase</h1></legend>			
+			<label for="text">Insira um texto</label>
+			<br>
+			<textarea id="text" cols="150" rows="10" placeholder="insira um texto"></textarea>
+			<br>
+			<br>
+			<label for="word">Insira uma palavra ou frase que você deseja buscar no texto</label>
+			<br>
+			<input id="word"  size="155px" type="text" placeholder="insira uma palavra ou frase" />
+			<br>
+			<br>
+			<button type="submit" onclick="countName()">Enter</button>
+			<p id="count"></p>
+		</fieldset>
+	
+	</form>    
+
+    <script>
+	  let text = document.getElementById('text');
+      let word = document.getElementById('word'); 
+	  let indexIn = -1;
+	  let indexOut = 0;
+	  let count = 0;	  
+	  
+      function countName() {
+		while(indexOut !== -1){
+			indexOut = text.value.toLowerCase().indexOf(word.value.toLowerCase(), indexIn + 1);	
+			indexIn = indexOut;			
+			count++;			
+	    }
+		document.getElementById(
+			  'count'
+			).innerHTML = `Este texto tem  ${count - 1} ocorrências da palavra/frase ${word.value}.`;		
+	  }	  
+    </script>
+  </body>
+</html>
